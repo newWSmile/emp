@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xsi:schemaLocation=" http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                            http://www.springframework.org/schema/mvc
+                            http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd "
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans">
+    <!--注册empdao类-->
+    <bean id="empDaoId" class="cn.itcast.emp.dao.EmpDao"></bean>
+    <!--注册empservice类-->
+    <bean id="empServiceId" class="cn.itcast.emp.service.EmpService">
+        <property name="dao" ref="empDaoId"/>
+    </bean>
+
+    <!--注册Action-->
+    <bean name="/add.do" class="cn.itcast.emp.action.EmpAction">
+        <property name="service" ref="empServiceId"/>
+    </bean>
+    <!--映射器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--<property name="prefix" value="/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+    </bean>
+    <!--适配器-->
+    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">-->
+        <!--<property name="messageConverters">-->
+            <!--<list>-->
+                <!--<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--视图解析器-->
+
+
+
+</beans>
